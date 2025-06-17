@@ -1,0 +1,51 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsc && tsup",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts" 
+   },
+  "keywords": [],
+  "type": "module",
+  "author": "Bilal Ben Youssef",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/helmet": "^0.0.48",
+    "@types/node": "^24.0.3",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.16.0",
+    "openai": "^5.5.1"
+  },
+  "tsup": {
+    "entry": [
+      "src/server.ts"
+    ],
+    "outDir": "dist",
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "target": "ESNext",
+    "sourcemap": true,
+    "clean": true,
+    "dts": true,
+    "splitting": false,
+    "skipNodeModulesBundle": true
+  }
+}
