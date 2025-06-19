@@ -32,7 +32,13 @@ export default function Sidebar() {
                 </div>
 
                 <div className="mt-4">
-                    <a href="https://sora.chatgpt.com/explore" className="flex items-center justify-between w-full p-2 transition rounded-lg cursor-pointer group hover:bg-primary">
+                    <a
+                        href="https://sora.chatgpt.com/explore"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Explore Sora ChatGPT"
+                        className="flex items-center justify-between w-full p-2 transition rounded-lg cursor-pointer group hover:bg-primary"
+                    >
                         <div className="flex items-center gap-x-2">
                             <img src={assets.video_play}
                                 alt="Video Play"
@@ -58,18 +64,21 @@ export default function Sidebar() {
                 </div>
             </div>
 
-            <div className="relative px-1 mt-4 overflow-auto grow">
+
+            <div className="relative px-1 mt-4 overflow-auto grow scrollbar-thin">
                 <p className="sticky top-0 p-1 text-sm font-light text-gray-300/80 bg-secondary">Chats</p>
                 <ul className="flex flex-col">
                     {chatTitles.map((title, index) => (
                         <li key={index} className="text-sm font-light">
-                            <button type="button" className="w-full p-2 transition rounded-lg cursor-pointer text-start hover:bg-primary line-clamp-1">{title}</button>
+                            <button type="button" className="w-full p-2 transition rounded-lg cursor-pointer text-start hover:bg-primary">
+                                <span className="line-clamp-1">{title}</span>
+                            </button>
                         </li>
                     ))}
                 </ul>
             </div>
 
-            <div>
+            <div className="mt-2">
                 <button type="button" className="flex items-center w-full p-2 rounded-lg cursor-pointer gap-x-2 group hover:bg-primary">
                     <div className="p-2 border rounded-full shadow group-hover:border-secondary border-primary w-fit">
                         <img

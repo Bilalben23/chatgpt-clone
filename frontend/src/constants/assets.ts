@@ -11,6 +11,7 @@ import sidebar_toggle from "@assets/sidebar_toggle.svg";
 import terminal from "@assets/terminal.svg";
 import menu from "@assets/menu.svg";
 import video_play from "@assets/video_play.svg";
+import share from "@assets/share.svg";
 
 
 export const assets = {
@@ -26,5 +27,6 @@ export const assets = {
     sidebar_toggle,
     terminal,
     menu,
-    video_play
+    video_play,
+    share
 }

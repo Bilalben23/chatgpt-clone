@@ -2,7 +2,7 @@ import Header from './Header';
 
 export default function ChatBox() {
     return (
-        <section className='p-5 text-white bg-primary grow'>
+        <section className='px-5 py-2 text-white bg-primary grow'>
             <Header />
 
             <div>
