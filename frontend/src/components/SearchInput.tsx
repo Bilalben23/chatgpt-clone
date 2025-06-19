@@ -5,9 +5,9 @@ import { FaArrowUp } from 'react-icons/fa';
 
 export default function SearchInput() {
     return (
-        <div className="flex items-center w-full max-w-3xl px-3 rounded-4xl gap-x-3 bg-gray-50/15">
+        <div className="flex items-center w-full max-w-3xl px-3 rounded-4xl gap-x-3 bg-gray-50/8">
             <div className="shrink-0">
-                <label htmlFor="file" className="block p-2.5 rounded-full cursor-pointer hover:bg-primary" role="button">
+                <label htmlFor="file" className="block transition hover:opacity-90 p-2.5 rounded-full cursor-pointer hover:bg-primary" role="button">
                     <img
                         src={assets.clip}
                         alt="Clip"
@@ -23,7 +23,7 @@ export default function SearchInput() {
             <div className="shrink-0">
                 <button
                     type="button"
-                    className="p-2.5 shadow bg-white group disabled:cursor-not-allowed rounded-full cursor-pointer disabled:opacity-40"
+                    className="p-2.5 transition hover:opacity-90 hover:shadow-none shadow bg-white group disabled:cursor-not-allowed rounded-full cursor-pointer disabled:opacity-40"
                 >
                     <FaArrowUp className="text-black group-disabled:opacity-50 size-4" />
                 </button>
