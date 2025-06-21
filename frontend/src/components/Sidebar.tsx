@@ -1,9 +1,12 @@
 import { assets } from "@constants/assets";
 import { chatTitles } from "@constants/chatTitles";
+import { useSidebar } from "@hooks/useSidebar";
 
 export default function Sidebar() {
+    const { toggleSidebar, isSidebarOpen } = useSidebar();
+
     return (
-        <aside className='bg-secondary justify-between flex flex-col h-screen p-2.5 md:w-56 lg:w-64 text-white'>
+        <aside className={`bg-secondary md:translate-x-0 justify-between flex flex-col h-screen p-2.5 md:w-56 lg:w-64 text-white transition-transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
 
             <div>
                 <div className='flex items-center justify-between'>
@@ -13,7 +16,7 @@ export default function Sidebar() {
                             className="size-6"
                         />
                     </button>
-                    <button type="button" className="p-2 transition rounded-lg cursor-pointer opacity-70 hover:bg-primary">
+                    <button type="button" className="p-2 transition rounded-lg cursor-pointer opacity-70 hover:bg-primary" onClick={toggleSidebar}>
                         <img src={assets.sidebar_toggle}
                             alt="sidebar toggle"
                             className="size-6"
