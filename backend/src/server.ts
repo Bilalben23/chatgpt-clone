@@ -1,42 +1,29 @@
 import express from "express";
-import OpenAI from "openai";
+import cors from "cors";
+import { ENV_VARS } from "./config/envVars";
+import { configurePassport } from "./config/passport";
+import cookieParser from "cookie-parser";
+import passport from "passport";
+import connectDB from "./config/db";
 
 const app = express();
+configurePassport();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(cors({
+    origin: [ENV_VARS.CLIENT_URL],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}))
+app.use(passport.initialize());
 
 
-app.get("/", (req, res) => {
-    res.send("Hello world")
-})
-
-
-const token = "";
-
-export async function main() {
-
-    const client = new OpenAI({
-        baseURL: "https://models.github.ai/inference",
-        apiKey: token
-    });
-
-    const response = await client.chat.completions.create({
-        messages: [
-            { role: "system", content: "" },
-            { role: "user", content: "What is the capital of France?" }
-        ],
-        model: "openai/gpt-4o",
-        temperature: 1,
-        max_tokens: 4096,
-        top_p: 1
-    });
-
-    console.log(response.choices[0].message.content);
-}
-
-main().catch((err) => {
-    console.error("The sample encountered an error:", err);
-});
-
-
-app.listen(5000, () => {
-    console.log("App running on http://localhost:5000");
+const PORT = ENV_VARS.PORT;
+app.listen(PORT, () => {
+    connectDB();
+    console.log(`App running on http://localhost:${PORT}`);
 })
