@@ -1,6 +1,6 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types, Document } from "mongoose";
 
-interface Chat extends Document {
+interface Chat extends Document<Types.ObjectId> {
     userId: string;
     prompt: string;
     response: string;

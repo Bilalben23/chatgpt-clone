@@ -7,6 +7,7 @@ export const ENV_VARS = {
     CLIENT_URL: process.env.CLIENT_URL || "http://localhost:5173",
     NODE_ENV: (process.env.NODE_ENV || "development") as ("development" | "production"),
     MONGO_URI: process.env.MONGO_URI || "mongodb://localhost:27017/chatGPT",
+    OPENAI_TOKEN: process.env.OPENAI_TOKEN || "open-ai-token",
     ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET || "your-access-secret",
     REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET || "your-refresh-secret",
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || "your-google-client-id",

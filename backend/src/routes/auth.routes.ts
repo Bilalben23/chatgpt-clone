@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as AuthController from "../controller/auth.controller";
 import passport from "passport";
-import { validate } from "@/middlewares/validate";
+import { validate } from "@/middlewares/validate.middleware";
 import { loginSchema, registerSchema } from "@/validation/auth.schema";
 
 
