@@ -5,6 +5,7 @@ import { configurePassport } from "./config/passport";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 import connectDB from "./config/db";
+import authRoutes from "./routes/auth.routes";
 
 const app = express();
 configurePassport();
@@ -20,6 +21,12 @@ app.use(cors({
     credentials: true
 }))
 app.use(passport.initialize());
+
+
+app.use("/api/v1/auth", authRoutes);
+
+
+
 
 
 const PORT = ENV_VARS.PORT;

@@ -3,10 +3,11 @@ import type { Request, Response } from "express-serve-static-core";
 import bcrypt from "bcrypt";
 import { ENV_VARS } from "@/config/envVars";
 import { createAccessToken, createRefreshToken } from "@/utils/jwt";
+import type { LoginInput, RegisterInput } from "@/validation/auth.schema";
 
 
 
-export const register = async (req: Request, res: Response) => {
+export const register = async (req: Request<{}, {}, RegisterInput>, res: Response) => {
     const { name, email, password } = req.body;
 
     try {
@@ -45,7 +46,7 @@ export const register = async (req: Request, res: Response) => {
             user: {
                 name: user.name,
                 email: user.email,
-                image: user.image
+                image: null
             },
             accessToken
         })
@@ -61,7 +62,7 @@ export const register = async (req: Request, res: Response) => {
 
 
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request<{}, {}, LoginInput>, res: Response) => {
     const { email, password } = req.body;
 
     try {
@@ -101,7 +102,7 @@ export const login = async (req: Request, res: Response) => {
             user: {
                 name: user.name,
                 email: user.email,
-                image: user.image
+                image: null
             },
             accessToken
         })

@@ -12,9 +12,9 @@ const jwtOptions = {
 
 
 const googleOptions = {
-    clientID: process.env.GOOGLE_CLIENT_ID!,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL || "/api/auth/google/callback"
+    clientID: ENV_VARS.GOOGLE_CLIENT_ID,
+    clientSecret: ENV_VARS.GOOGLE_CLIENT_SECRET,
+    callbackURL: ENV_VARS.GOOGLE_CALLBACK_URL
 } as const
 
 export function configurePassport() {
