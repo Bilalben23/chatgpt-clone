@@ -1,12 +1,14 @@
 import { assets } from "@constants/assets";
+import { useSidebar } from "@hooks/useSidebar";
 import { FaChevronDown } from "react-icons/fa";
 
 
 export default function Header() {
+    const { toggleSidebar } = useSidebar();
     return (
         <header className='sticky top-0 flex items-center justify-between w-full text-white'>
             <div>
-                <button type="button" className="flex items-center px-3 py-2 leading-relaxed transition rounded-lg cursor-pointer gap-x-2 hover:bg-gray-50/15">
+                <button type="button" className="flex items-center px-3 py-2 leading-relaxed transition rounded-lg cursor-pointer gap-x-2 hover:bg-gray-50/15" onClick={toggleSidebar}>
                     ChatGPT
                     <FaChevronDown size={14} className="text-" />
                 </button>

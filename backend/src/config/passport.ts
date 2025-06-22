@@ -2,11 +2,12 @@ import passport from "passport";
 import { Strategy as JWTStrategy, ExtractJwt, } from "passport-jwt";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { User } from "@/models/user.mode";
+import { ENV_VARS } from "./envVars";
 
 
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.JWT_SECRET!
+    secretOrKey: ENV_VARS.ACCESS_TOKEN_SECRET
 } as const
 
 
@@ -36,6 +37,8 @@ export function configurePassport() {
         new GoogleStrategy(googleOptions, async (_accessToken, _refreshToken, profile, done) => {
             try {
                 const email = profile.emails?.[0]?.value;
+                const image = profile.photos?.[0]?.value || null;
+
                 if (!email) return done(null, false);
 
                 let user = await User.findOne({ email });
@@ -44,6 +47,7 @@ export function configurePassport() {
                     user = new User({
                         name: profile.displayName,
                         email,
+                        image,
                         googleId: profile.id,
                         provider: "google"
                     })

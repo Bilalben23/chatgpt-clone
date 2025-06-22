@@ -1,9 +1,10 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 
-export interface IUser extends Document {
+export interface IUser extends Document<Types.ObjectId> {
     name: string;
     email: string;
     password?: string;
+    image?: string;
     provider: "local" | "google";
     googleId?: string;
 }
@@ -24,6 +25,10 @@ const userSchema = new Schema<IUser>({
         required: function () {
             return this.provider === "local"
         }
+    },
+    image: {
+        type: String,
+        default: null
     },
     provider: {
         type: String,
