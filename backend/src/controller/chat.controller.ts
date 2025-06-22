@@ -1,10 +1,11 @@
 import { Chat } from "@/models/chat.model";
 import { generateChatResponse } from "@/utils/generateChat";
+import { PromptInput } from "@/validation/prompt.schema";
 import type { Request, Response } from "express-serve-static-core"
 
 
 
-export const sendPrompt = async (req: Request, res: Response) => {
+export const sendPrompt = async (req: Request<{}, {}, PromptInput>, res: Response) => {
     const { prompt } = req.body;
 
     try {
